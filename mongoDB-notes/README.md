@@ -1,5 +1,3 @@
-<style>* {direction: rtl;}</style>
-
 # أساسيات MongoDB
 
 ## 🔹 ما هي MongoDB؟
