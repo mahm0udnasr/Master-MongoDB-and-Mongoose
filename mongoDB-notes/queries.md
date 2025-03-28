@@ -1,4 +1,4 @@
-# MongoDB Queries
+# استعلامات MongoDB بكل بساطة
 
 ## 1. إضافة البيانات في MongoDB (Inserting Data)
 
