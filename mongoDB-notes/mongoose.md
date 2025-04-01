@@ -87,3 +87,36 @@ const orderSchema = new mongoose.Schema({
   quantity: { type: Number, min: 1, required: true }
 });
 ```
+
+## يعني ايه Model في Mongoose؟
+الموديل هو عبارة عن **constructor function** بيمثل Collection معين في **MongoDB**، وبيستخدم الـ **Schema** اللي عرفناه عشان يحدد شكل كل **Document** جوه الـ Collection ده.
+
+---
+
+## ازاي بنعمل Model؟
+لازم نكون معرفين Schema الأول، وبعد كده بنعمل الموديل باستخدام `mongoose.model()`.
+
+### مثال عملي:
+```js
+import mongoose from 'mongoose';
+
+// تعريف Schema
+const userSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true, unique: true },
+  age: { type: Number, min: 18 }
+});
+
+// إنشاء Model
+const User = mongoose.model('User', userSchema);
+
+export default User;
+```
+
+---
+
+## ايه فايدة الـ Model؟
+- بيترجم الأكواد بتاعتك لـ **MongoDB Queries**.
+- بيسهل التعامل مع **Documents** جوه **MongoDB**.
+- بيضمن إن البيانات اللي بتتسجل بتتوافق مع الـ **Schema**.
+- بيديك مميزات زي **التعامل مع البيانات، البحث، التعديل، الحذف، والتحقق من البيانات** بسهولة.
