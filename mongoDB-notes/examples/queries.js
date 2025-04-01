@@ -1,8 +1,6 @@
 // import model
 import User from "./schema";
 
-
-
 // create documents
 const CreateDoc = async () => {
   const user = new User({
@@ -22,8 +20,6 @@ const CreateManyDoc = async () => {
   await User.insertMany(users);
   console.log("Users Created");
 };
-
-
 
 // find all documents
 const FindAll = async () => {
@@ -52,7 +48,7 @@ const FindGtAndLt = async () => {
   const users = await User.find({ age: { $gt: 20, $lt: 30 } });
   console.log(users);
 };
-// can you use regex 
+// can you use regex
 const FindRegex = async () => {
   const users = await User.find({ name: { $regex: /Mahmoud/i } });
   console.log(users);
@@ -69,13 +65,33 @@ const FindOrAnd = async () => {
   console.log(users);
 };
 
-
 // update one document
-
-
+const updateOne = async () => {
+  const user = await User.updateOne(
+    { name: "Mahmoud Nasr" },
+    {
+      age: 20,
+    }
+  );
+  await user.save();
+  console.log(user);
+};
 // update many documents
-
+const updateMany = async () => {
+  const users = await User.updateMany({ age: 19 }, { age: 20 });
+  users.save();
+  console.log(users);
+};
 
 // delete one document
-
+const deleteOne = async () => {
+  const user = await User.findByIdAndDelete("id");
+  // you can use User.deleteOne({name: "Mahmoud Nasr"})
+  console.log(user);
+};
 // delete many documents
+const deleteMany = async () => {
+  const users = await User.deleteMany({ age: 19 });
+  // delete all user that his age = 19
+  console.log(users);
+};
